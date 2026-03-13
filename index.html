@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The_Ritesh Learning Centre</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== BODY & BACKGROUND ===== */
+body{
+  margin:0;
+  font-family:'Roboto',sans-serif;
+  background:url("https://c4.wallpaperflare.com/wallpaper/410/77/199/5bd0bdc12d414-wallpaper-preview.jpg") no-repeat center center fixed;
+  background-size:cover;
+  color:white;
+}
+
+/* ===== LOGO ===== */
+#logo{
+  position:fixed;
+  top:20px;
+  left:20px;
+  width:60px;
+  height:60px;
+  border-radius:15px;
+  background: rgba(0,255,234,0.2);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-weight:bold;
+  color:#00ffe0;
+  font-size:20px;
+  backdrop-filter: blur(10px);
+  border:1px solid rgba(0,255,234,0.3);
+  z-index:1000;
+  cursor:pointer;
+  transition: transform 0.3s;
+}
+#logo:hover{
+  transform: rotate(15deg) scale(1.1);
+}
+
+/* ===== HEADER ===== */
+header{
+  height:220px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+header h1{
+  font-size:48px;
+  color:#00ffe0;
+  text-shadow: 0 0 10px #00ffe0;
+}
+
+/* ===== NAVBAR ===== */
+nav{
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  position:sticky;
+  top:0;
+  z-index:999;
+}
+nav ul{
+  margin:0;
+  padding:0;
+  display:flex;
+  list-style:none;
+  justify-content:center;
+}
+nav ul li{
+  margin:0 15px;
+}
+nav ul li a{
+  color:white;
+  text-decoration:none;
+  padding:12px 20px;
+  display:block;
+  border-radius:8px;
+  font-weight:bold;
+  transition: all 0.3s;
+}
+nav ul li a:hover{
+  color:#00ffe0;
+  background: rgba(0,255,234,0.15);
+}
+
+/* ===== SECTION ===== */
+section{
+  display:none;
+  padding:40px 20px;
+  max-width:1000px;
+  margin:auto;
+}
+h2{
+  text-align:center;
+  color:#00ffe0;
+  text-shadow: 0 0 10px #00ffe0;
+  margin-bottom:30px;
+}
+
+/* ===== CARD ===== */
+.card{
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  border-radius:15px;
+  padding:25px;
+  margin:20px 0;
+  border:1px solid rgba(255,255,255,0.2);
+  transition: all 0.3s;
+}
+.card:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(0,255,234,0.3);
+}
+
+/* ===== BUTTON ===== */
+.button{
+  display:inline-block;
+  background: rgba(0,255,234,0.2);
+  color:#00ffe0;
+  padding:10px 25px;
+  border-radius:8px;
+  border:1px solid rgba(0,255,234,0.3);
+  text-decoration:none;
+  font-weight:bold;
+  margin:10px 5px;
+  transition: all 0.3s;
+}
+.button:hover{
+  background:#00ffe0;
+  color:black;
+  transform: scale(1.1);
+}
+
+/* ===== VIDEO ===== */
+.video-container{
+  position:relative;
+  padding-bottom:56.25%;
+  height:0;
+}
+.video-container iframe{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  border-radius:10px;
+}
+
+/* ===== SEARCH ===== */
+.search-box{
+  text-align:center;
+  margin-bottom:20px;
+}
+.search-box input{
+  padding:12px;
+  width:80%;
+  max-width:500px;
+  border-radius:8px;
+  border:none;
+  outline:none;
+  font-size:16px;
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.1);
+  color:white;
+}
+.search-box input::placeholder{
+  color:#ddd;
+}
+#noResult{
+  text-align:center;
+  color:red;
+  display:none;
+  font-weight:bold;
+  margin-top:20px;
+}
+
+/* ===== EXAM GRID ===== */
+.exam-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+}
+.exam-card{
+  padding:20px;
+  text-align:center;
+  border-radius:10px;
+  background: rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.2);
+  transition: all 0.3s;
+  cursor:pointer;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-decoration:none;
+  color:#00ffe0;
+  font-weight:bold;
+}
+.exam-card:hover{
+  transform: scale(1.05);
+  box-shadow:0 0 15px #00ffe0;
+}
+
+/* ===== TOGGLE BUTTONS ===== */
+.toggle-buttons{
+  text-align:center;
+  margin-bottom:20px;
+}
+.toggle-buttons button{
+  margin:5px;
+  padding:10px 20px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  background:#00ffe0;
+  color:black;
+  font-weight:bold;
+  transition: all 0.3s;
+}
+.toggle-buttons button:hover{
+  background:white;
+  color:#00ffe0;
+  transform: scale(1.1);
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="logo">AR</div>
+
+<header>
+<h1>The_Ritesh Learning Centre</h1>
+</header>
+
+<nav>
+<ul>
+<li><a href="#" onclick="showSection('home')">Home</a></li>
+<li><a href="#" onclick="showSection('computer')">Computer</a></li>
+<li><a href="#" onclick="showSection('competitive')">Competitive</a></li>
+<li><a href="#" onclick="showSection('admission')">Admission Form</a></li>
+<li><a href="#" onclick="showSection('test')">Test</a></li>
+
+<!-- ✅ RESULT BUTTON ADDED -->
+<li><a href="#" onclick="showSection('Result')">Result</a></li>
+
+</ul>
+</nav>
+
+<!-- ===== HOME ===== -->
+<section id="home">
+<h2>Welcome</h2>
+<div class="card search-box">
+<input type="text" id="searchInput" placeholder="Search on this website...">
+</div>
+
+<div id="noResult">This search is not available on this website</div>
+
+<div class="card searchable">
+<img src="Ritesh Image.jpeg" style="width:200px;border-radius:10px">
+<p>
+Hello Dear 👋 <br>
+My name is <b>Ritesh</b>.<br>
+This platform provides you computer and competitive exam content.
+</p>
+</div>
+
+<h2>Government Exam Websites</h2>
+<div class="exam-grid">
+  <a href="https://sarkariresult.com.cm/" target="_blank" class="exam-card searchable">SARKARI RESULT</a>
+  <a href="https://ssc.gov.in/" target="_blank" class="exam-card searchable">SSC</a>
+  <a href="https://www.upsc.gov.in" target="_blank" class="exam-card searchable">UPSC</a>
+  <a href="https://indianrailways.gov.in" target="_blank" class="exam-card searchable">Railway</a>
+  <a href="https://www.ibps.in" target="_blank" class="exam-card searchable">IBPS</a>
+  <a href="https://nta.ac.in" target="_blank" class="exam-card searchable">NTA</a>
+  <a href="https://joinindianarmy.nic.in/default.aspx" target="_blank" class="exam-card searchable">INDIAN ARMY</a>
+   <a href="https://joinindianarmy.nic.in/default.aspx" target="_blank" class="exam-card searchable">INDIAN ARMY</a>
+
+</div>
+</section>
+
+<!-- ===== COMPUTER ===== -->
+<section id="computer">
+<h2>Computer Related Content</h2>
+
+<div class="search-box">
+<input type="text" class="searchInputSection" placeholder="Search in Computer Section...">
+</div>
+
+<div class="toggle-buttons">
+<button onclick="showContent('pdf1')">PDF</button>
+<button onclick="showContent('video1')">Videos</button>
+</div>
+
+<div id="pdf1" class="card searchable">
+<a href="Components of CPU.pdf" class="button">Download Notepad Notes</a>
+<a href="#" class="button">Download MS Word Notes</a>
+</div>
+<DIV id="pdf1" class="CARD searchable">
+  <iframe src="ADCA Course Syllabus.pdf" width="100%" height="600PX"></iframe>
+</DIV>
+
+<DIV id="pdf1" class="CARD searchable">
+  <iframe src="ADCANOTES-FUNDAMENTALSOFCOMPUTER-NOTES1.pdf" width="100%" height="600PX"></iframe>
+</DIV>
+
+<DIV id="pdf1" class="CARD searchable">
+  <iframe src="Components of CPU.pdf" width="100%" height="600PX"></iframe>
+</DIV>
+
+<DIV id="pdf1" class="CARD searchable">
+  <iframe src="MOUSE AND TOUCHPAD.pdf" width="100%" height="600PX"></iframe>
+</DIV>
+
+<div id="video1" class="card" style="display:none">
+<div class="video-container">
+<iframe src="https://www.youtube.com/embed/tVzUXW6siu0"></iframe>
+</div>
+</div>
+</section>
+
+<!-- ===== COMPETITIVE ===== -->
+<section id="competitive">
+<h2>Competitive Exams</h2>
+
+<div class="search-box">
+<input type="text" class="searchInputSection" placeholder="Search in Competitive Section...">
+</div>
+
+<div class="toggle-buttons">
+<button onclick="showContent('pdf2')">PDF</button>
+<button onclick="showContent('video2')">Videos</button>
+</div>
+
+<div id="pdf2" class="card searchable">
+<a href="#" class="button">Download GK Notes</a>
+<a href="#" class="button">Download Reasoning Notes</a>
+</div>
+
+<div id="video2" class="card" style="display:none">
+<div class="video-container">
+<iframe src="https://www.youtube.com/embed/tVzUXW6siu0"></iframe>
+</div>
+</div>
+</section>
+
+<!-- ===== ADMISSION ===== -->
+<section id="admission">
+<h2>Admission Form</h2>
+<div class="card searchable">
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScCg7gszXP-eF_vS2reZk8itWURTTXSijqaQ2yIysauZJdIhQ/viewform?embedded=true"
+width="640" height="2424" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+</div>
+</section>
+
+<!-- ===== TEST ===== -->
+<section id="test">
+<h2>Test Form</h2>
+<div class="card searchable">
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScDBiXXGgFT5XEU_KZrIYh2GLVhJAVuiHBdp9VWxorrSckrew/viewform?embedded=true"
+width="640" height="13251" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+</div>
+</section>
+
+<!-- ===== RESULT SECTION ADDED ===== -->
+<section id="Result">
+<h2>Result</h2>
+<div class="card searchable">
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSlXSJT1pCHYerglrobIYsHbFeqKsMS5pqKSk7f1iusyImikPbkq3i_wlDkS0b_tm6QazMO2Zo1wM9P/pubhtml?widget=true&headers=false"
+width="640" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+</div>
+</section>
+
+<script>
+
+/* ===== SHOW SECTION ===== */
+function showSection(id){
+  let sections=document.querySelectorAll("section");
+  sections.forEach(sec=>sec.style.display="none");
+  document.getElementById(id).style.display="block";
+}
+showSection("home");
+
+/* ===== PDF & VIDEO TOGGLE ===== */
+function showContent(id){
+  let all=document.querySelectorAll("#pdf1,#video1,#pdf2,#video2");
+  all.forEach(el=>el.style.display="none");
+  document.getElementById(id).style.display="block";
+}
+
+/* ===== SEARCH FUNCTION ===== */
+function initSearch(inputSelector){
+  let input=document.querySelector(inputSelector);
+  input.addEventListener("keyup",function(){
+    let filter=this.value.toLowerCase();
+    let section=this.closest("section");
+    let items=section.querySelectorAll(".searchable");
+    let found=false;
+    items.forEach(item=>{
+      if(item.innerText.toLowerCase().includes(filter)){
+        item.style.display="flex";
+        found=true;
+      }else{
+        item.style.display="none";
+      }
+    });
+    let noResult=section.querySelector("#noResult");
+    if(noResult){
+      noResult.style.display = found ? "none" : "block";
+    }
+  });
+}
+
+/* Initialize search for each section */
+initSearch("#searchInput");
+document.querySelectorAll(".searchInputSection").forEach(input=>initSearch("#"+input.id));
+
+</script>
+
+</body>
+</html>
